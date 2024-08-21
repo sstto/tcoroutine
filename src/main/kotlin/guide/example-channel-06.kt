@@ -4,6 +4,7 @@ package kotlinx.coroutines.guide.exampleChannel06
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 
+// fan in/fan out
 fun main() = runBlocking<Unit> {
     val producer = produceNumbers()
     repeat(5) { launchProcessor(it, producer) }

@@ -2,10 +2,12 @@
 package kotlinx.coroutines.guide.exampleContext09
 
 import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 @OptIn(ExperimentalStdlibApi::class)
 fun main() = runBlocking<Unit> {
-    val job = launch(Dispatchers.Default + CoroutineName("test") + SupervisorJob()) {
+    val context: CoroutineContext = Dispatchers.IO + CoroutineName("test") + SupervisorJob()
+    val job = launch(context) {
         println("I'm working in coroutineContext ")
         println("job: ${coroutineContext[Job]}")
         println("dispatcher: ${coroutineContext[CoroutineDispatcher]}")
